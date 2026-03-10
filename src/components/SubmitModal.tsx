@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtYA4PLNGCLF0soT3qOKUxnfyjGmW2QbH5i_GL8l8H4FyybATX4pI7-XMoQcDOALfJ/exec'
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxq98u-E3GlqL0SZWlF4DrX9xEaHJFjIsksCHaHephi51zKGhH_3iH9zByB0TEtsZ4/exec'
 
 interface Props {
   open: boolean

@@ -36,7 +36,7 @@ export default function Hero() {
               onClick={() => setModalOpen(true)}
               className="px-8 py-3 md:px-10 md:py-4 bg-primary text-white text-base md:text-lg font-black rounded-xl hover:scale-105 transition-transform shadow-lg shadow-primary/25 text-shadow-sharp hover:bg-violet-600 shadow-violet-500/30 w-full md:w-auto"
             >
-              지금 신청하기
+              개발 도구 신청하기
             </button>
           </div>
         </div>
