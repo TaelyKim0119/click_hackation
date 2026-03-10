@@ -3,7 +3,7 @@ const notices = [
     icon: 'assignment_turned_in',
     title: '작품 제출 의무',
     description:
-      '개발 도구를 지원받은 참가자는 반드시 최종 작품을 제출해야 합니다. 미제출 시 향후 지원이 제한될 수 있습니다.',
+      '개발 도구를 지원받은 참가자는 반드시 최종 작품을 제출해야 합니다.',
   },
   {
     icon: 'copyright',
