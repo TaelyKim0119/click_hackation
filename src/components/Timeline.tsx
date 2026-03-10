@@ -15,7 +15,7 @@ const events = [
   {
     title: '프로덕트 최종 제출',
     date: '~ 4월 13일 (월)',
-    detail: '개발 완료본 및 시연 영상 제출',
+    detail: '개발 완료본 제출',
     icon: 'upload_file',
     color: 'from-cyan-400 to-blue-500',
     ring: 'ring-cyan-400/30',
