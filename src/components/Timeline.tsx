@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import SubmitModal from './SubmitModal'
+
 const events = [
   {
     title: '신청 및 도구 지원',
@@ -18,6 +21,7 @@ const events = [
     ring: 'ring-cyan-400/30',
     textColor: 'text-cyan-400',
     active: false,
+    hasSubmit: true,
   },
   {
     title: '1차 심사',
@@ -42,52 +46,70 @@ const events = [
 ]
 
 export default function Timeline() {
-  return (
-    <div className="glass-panel rounded-3xl p-10 flex flex-col gap-10">
-      <h3 className="text-2xl font-bold flex items-center gap-3 text-shadow-sharp">
-        <span className="material-symbols-outlined text-primary">calendar_today</span>
-        Event Timeline
-      </h3>
-      <div className="flex flex-col md:flex-row gap-6 justify-between relative">
-        {/* 연결선 */}
-        <div className="hidden md:block absolute top-7 left-[7%] right-[7%] h-0.5 bg-gradient-to-r from-violet-500/40 via-cyan-400/40 via-amber-400/40 to-pink-500/40" />
+  const [submitOpen, setSubmitOpen] = useState(false)
 
-        {events.map((event, idx) => (
-          <div
-            key={event.title}
-            className="flex flex-col items-center text-center gap-4 flex-1 group"
-          >
-            {/* 동그라미 + 아이콘 */}
+  return (
+    <>
+      <div className="glass-panel rounded-3xl p-10 flex flex-col gap-10">
+        <h3 className="text-2xl font-bold flex items-center gap-3 text-shadow-sharp">
+          <span className="material-symbols-outlined text-primary">calendar_today</span>
+          Event Timeline
+        </h3>
+        <div className="flex flex-col md:flex-row gap-6 justify-between relative">
+          {/* 연결선 */}
+          <div className="hidden md:block absolute top-7 left-[7%] right-[7%] h-0.5 bg-gradient-to-r from-violet-500/40 via-cyan-400/40 via-amber-400/40 to-pink-500/40" />
+
+          {events.map((event, idx) => (
             <div
-              className={`relative size-14 rounded-full bg-gradient-to-br ${event.color} ring-4 ${event.ring} flex items-center justify-center shadow-lg transition-transform group-hover:scale-110`}
+              key={event.title}
+              className="flex flex-col items-center text-center gap-4 flex-1 group"
             >
-              <span className="material-symbols-outlined text-white text-2xl">
-                {event.icon}
+              {/* 동그라미 + 아이콘 */}
+              <div
+                className={`relative size-14 rounded-full bg-gradient-to-br ${event.color} ring-4 ${event.ring} flex items-center justify-center shadow-lg transition-transform group-hover:scale-110`}
+              >
+                <span className="material-symbols-outlined text-white text-2xl">
+                  {event.icon}
+                </span>
+                {event.active && (
+                  <span className="absolute -top-1 -right-1 size-4 bg-green-400 rounded-full border-2 border-[#0d021f] animate-pulse" />
+                )}
+              </div>
+
+              {/* 단계 번호 */}
+              <span className={`text-xs font-bold uppercase tracking-widest ${event.textColor}`}>
+                Step {idx + 1}
               </span>
-              {event.active && (
-                <span className="absolute -top-1 -right-1 size-4 bg-green-400 rounded-full border-2 border-[#0d021f] animate-pulse" />
+
+              <h4 className="font-black text-lg text-shadow-sharp leading-tight">
+                {event.title}
+              </h4>
+              <p className={`font-bold text-sm ${event.active ? 'text-primary' : 'text-slate-300'}`}>
+                {event.date}
+              </p>
+              {event.detail && (
+                <p className={`text-xs px-3 py-1.5 rounded-full ${
+                  event.detail === '블라인드 심사'
+                    ? 'bg-amber-500/20 text-amber-300 font-extrabold text-sm neon-glow'
+                    : 'bg-white/5 text-slate-500'
+                }`}>
+                  {event.detail}
+                </p>
+              )}
+              {event.hasSubmit && (
+                <button
+                  onClick={() => setSubmitOpen(true)}
+                  className="mt-1 px-5 py-2 text-sm font-bold rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white hover:scale-105 transition-transform shadow-md shadow-cyan-500/20"
+                >
+                  제출하기
+                </button>
               )}
             </div>
-
-            {/* 단계 번호 */}
-            <span className={`text-xs font-bold uppercase tracking-widest ${event.textColor}`}>
-              Step {idx + 1}
-            </span>
-
-            <h4 className="font-black text-lg text-shadow-sharp leading-tight">
-              {event.title}
-            </h4>
-            <p className={`font-bold text-sm ${event.active ? 'text-primary' : 'text-slate-300'}`}>
-              {event.date}
-            </p>
-            {event.detail && (
-              <p className="text-xs text-slate-500 bg-white/5 px-3 py-1.5 rounded-full">
-                {event.detail}
-              </p>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+
+      <SubmitModal open={submitOpen} onClose={() => setSubmitOpen(false)} />
+    </>
   )
 }
