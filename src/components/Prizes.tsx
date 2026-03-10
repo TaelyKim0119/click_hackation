@@ -1,8 +1,8 @@
 const prizes = [
   {
     rank: '1ST PLACE',
-    amount: '3,000,000 원',
-    perk: '5 Days Off',
+    amount: '1,000,000 원',
+    perk: '2 Days Off',
     perkIcon: 'airplane_ticket',
     medal: 'military_tech',
     gradient: 'from-yellow-400 via-amber-500 to-yellow-600',
@@ -14,8 +14,8 @@ const prizes = [
   },
   {
     rank: '2ND PLACE',
-    amount: '2,000,000 원',
-    perk: '3 Days Off',
+    amount: '500,000 원',
+    perk: '1 Day Off',
     perkIcon: 'flight',
     medal: 'workspace_premium',
     gradient: 'from-slate-300 via-gray-400 to-slate-500',
@@ -27,7 +27,7 @@ const prizes = [
   },
   {
     rank: '3RD PLACE',
-    amount: '1,000,000 원',
+    amount: '300,000 원',
     perk: '1 Day Off',
     perkIcon: 'bed',
     medal: 'stars',
