@@ -13,7 +13,7 @@ export default function App() {
       <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div className="layout-container flex h-full grow flex-col items-center">
           <Header />
-          <main className="w-full max-w-6xl px-6 lg:px-10 flex flex-col gap-12 py-10">
+          <main className="w-full max-w-6xl px-4 md:px-6 lg:px-10 flex flex-col gap-8 md:gap-12 py-6 md:py-10">
             <Hero />
             <Highlights />
             <ToolBanner />

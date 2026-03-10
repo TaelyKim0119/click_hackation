@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function SubmitModal({ open, onClose }: Props) {
-  const [form, setForm] = useState({ name: '', project: '', link: '' })
+  const [form, setForm] = useState({ name: '', project: '', link: '', email: '', phone: '' })
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
 
@@ -23,6 +23,8 @@ export default function SubmitModal({ open, onClose }: Props) {
         name: form.name,
         project: form.project,
         link: form.link,
+        email: form.email,
+        phone: form.phone,
       })
       await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
         method: 'GET',
@@ -37,7 +39,7 @@ export default function SubmitModal({ open, onClose }: Props) {
   }
 
   const handleClose = () => {
-    setForm({ name: '', project: '', link: '' })
+    setForm({ name: '', project: '', link: '', email: '', phone: '' })
     setDone(false)
     onClose()
   }
@@ -48,7 +50,7 @@ export default function SubmitModal({ open, onClose }: Props) {
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={handleClose}
       />
-      <div className="relative w-full max-w-md glass-panel rounded-3xl p-8 border-cyan-400/30 shadow-2xl shadow-cyan-500/10">
+      <div className="relative w-full max-w-md glass-panel rounded-3xl p-8 border-cyan-400/30 shadow-2xl shadow-cyan-500/10 max-h-[90vh] overflow-y-auto">
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
@@ -66,7 +68,10 @@ export default function SubmitModal({ open, onClose }: Props) {
             <h3 className="text-2xl font-black text-shadow-sharp">제출 완료!</h3>
             <p className="text-slate-400 text-center">
               프로덕트가 성공적으로 제출되었습니다.<br />
-              심사 결과는 추후 안내드리겠습니다.
+              등록하신 이메일로 확인 메일을 보내드립니다.
+            </p>
+            <p className="text-xs text-slate-500 text-center">
+              확인 메일이 오지 않을 경우 관리자에게 문의해주세요.
             </p>
             <button
               onClick={handleClose}
@@ -82,7 +87,8 @@ export default function SubmitModal({ open, onClose }: Props) {
                 프로덕트 제출
               </h3>
               <p className="text-sm text-slate-400">
-                완성된 프로덕트 링크를 제출해주세요.
+                완성된 프로덕트 링크를 제출해주세요.<br />
+                <span className="text-amber-400 font-bold">* 확인 메일 발송을 위해 Gmail 주소로 입력해주세요.</span>
               </p>
             </div>
 
@@ -95,6 +101,30 @@ export default function SubmitModal({ open, onClose }: Props) {
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="홍길동"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-bold text-slate-300">이메일</label>
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="example@gmail.com"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-bold text-slate-300">핸드폰 번호</label>
+                <input
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="010-1234-5678"
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                 />
               </div>

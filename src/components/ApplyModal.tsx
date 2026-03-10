@@ -71,6 +71,9 @@ export default function ApplyModal({ open, onClose }: Props) {
               해커톤 참가 신청이 완료되었습니다.<br />
               등록하신 이메일로 안내드리겠습니다.
             </p>
+            <p className="text-xs text-slate-500 text-center">
+              확인 메일이 오지 않을 경우 관리자에게 문의해주세요.
+            </p>
             <button
               onClick={handleClose}
               className="px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-violet-600 transition-colors"

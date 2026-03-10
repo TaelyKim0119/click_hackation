@@ -22,17 +22,17 @@ const highlights = [
 
 export default function Highlights() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
       {highlights.map((item) => (
         <div
           key={item.icon}
-          className="glass-panel p-8 rounded-2xl flex flex-col gap-4 group hover:border-primary/50 transition-all"
+          className="glass-panel p-5 md:p-8 rounded-2xl flex flex-col gap-3 md:gap-4 group hover:border-primary/50 transition-all"
         >
-          <div className="size-14 rounded-xl bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-            <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+          <div className="size-11 md:size-14 rounded-xl bg-slate-800 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+            <span className="material-symbols-outlined text-2xl md:text-3xl">{item.icon}</span>
           </div>
-          <h3 className="text-2xl font-bold text-shadow-sharp">{item.title}</h3>
-          <p className="leading-relaxed text-slate-300" dangerouslySetInnerHTML={{ __html: item.description }} />
+          <h3 className="text-xl md:text-2xl font-bold text-shadow-sharp">{item.title}</h3>
+          <p className="leading-relaxed text-slate-300 text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.description }} />
           {item.link && (
             <a
               href={item.link}
