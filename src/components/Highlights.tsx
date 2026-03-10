@@ -3,7 +3,7 @@ const highlights = [
     icon: 'terminal',
     title: 'Claude MAX 유료 플랜 지원',
     description:
-      '화려한 PPT나 기획안은 필요 없습니다. 우리가 보고 싶은 건 오직 작동하는 MVP(Minimum Viable Product)뿐입니다.',
+      '화려한 PPT나 기획안은 필요 없습니다. 우리가 보고 싶은 건 오직 <span class="text-primary font-black text-lg neon-glow">작동하는 MVP</span><span class="text-slate-400">(Minimum Viable Product)</span>뿐입니다.',
   },
   {
     icon: 'rocket_launch',
@@ -32,7 +32,7 @@ export default function Highlights() {
             <span className="material-symbols-outlined text-3xl">{item.icon}</span>
           </div>
           <h3 className="text-2xl font-bold text-shadow-sharp">{item.title}</h3>
-          <p className="leading-relaxed text-slate-300">{item.description}</p>
+          <p className="leading-relaxed text-slate-300" dangerouslySetInnerHTML={{ __html: item.description }} />
           {item.link && (
             <a
               href={item.link}
